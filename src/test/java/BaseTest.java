@@ -32,13 +32,16 @@ public class BaseTest {
     public void closeBrowser() {
         driver.quit();
     }
+
     public void login(String email, String password) {
         WebElement emailInput = driver.findElement(By.cssSelector("[type='email']"));
         WebElement passwordInput = driver.findElement(By.cssSelector("[type='password']"));
         WebElement loginButton = driver.findElement(By.cssSelector("[type='submit']"));
-        emailInput.sendKeys("Yevhenii.Ustenko@testpro.io");
-        passwordInput.sendKeys("Fantazer120393!");
+        emailInput.sendKeys(email);
+        passwordInput.sendKeys(password);
         loginButton.click();
+        //"Yevhenii.Ustenko@testpro.io"
+        //"Fantazer120393!"
 
     }
 
