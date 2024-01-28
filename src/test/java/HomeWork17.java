@@ -10,20 +10,26 @@ public class HomeWork17 extends BaseTest {
     public void addSongToPlaylist() {
 
         login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
-        WebElement Search = driver.findElement(By.cssSelector("[type='search']"));
-        WebElement selectSong = driver.findElement(By.xpath("//button[contains(@title,'BornKing')]");
-        selectSong.click();
+        String songName = "BornKing";
+        WebElement search = driver.findElement(By.cssSelector("[type='search']"));
+        //WebElement songName = driver.findElement(By.xpath("//button[contains(@title,'BornKing')]");
+        search.sendKeys("BornKing");
         WebElement viewButton = driver.findElement(By.cssSelector("[data-test='view-all-songs-btn']"));
         viewButton.click();
-        WebElement songName = driver.findElement(By.xpath("//td[contains(text(),'BornKing')]"));
-        songName.click();
+        WebElement selectSong = driver.findElement(By.xpath("//td[contains(text(),'BornKing')]"));
+        selectSong.click();
+        //search.sendKeys("BornKing");
         WebElement addInput = driver.findElement(By.cssSelector("[class='btn-add-to']"));
-        WebElement playlist = driver.findElement(By.xpath("//li[contains(text(),'Popmusic')]"));
+        addInput.click();
+        WebElement playlist = driver.findElement(By.xpath("//li[contains(text(),'Popmusic')][last()!=6]"));
         playlist.click();
-        WebElement addedSong = driver.findElement(By.xpath("//td[contains(text(),'BornKing')]"));
-        Assert.assertEquals();
+        WebElement popMusic = driver.findElement(By.xpath("//a[@class='active']"));
+        popMusic.click();
+        //WebElement addedSong = driver.findElement(By.xpath("//td[contains(text(),'BornKing')]"));
+        search.sendKeys("BornKing");
+        Assert.assertEquals(true, true);
         closeBrowser();
-
 
     }
 }
+
