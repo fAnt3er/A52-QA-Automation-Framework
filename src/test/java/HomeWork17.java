@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class HomeWork17 extends BaseTest {
 
 
-    @Test
+    @Test(groups = "smoke")
     public void addSongToPlaylist() throws InterruptedException {
 
         login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
