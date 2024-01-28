@@ -10,8 +10,8 @@ import java.time.Duration;
 
 public class HomeWork16 extends BaseTest {
 
-    @Test
-    public void RegistrationNavigation(){
+    @Test (groups = "smoke")
+    public void RegistrationNavigation () {
 
         WebElement Registration = driver.findElement(By.cssSelector("[href='registration']"));
         Registration.click();
