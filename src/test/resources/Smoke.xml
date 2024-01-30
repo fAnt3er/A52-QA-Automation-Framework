@@ -12,7 +12,11 @@
             </class>
             <class name="HomeWork16"/>
             <class name="HomeWork17"/>
-            <class name="HomeWork18"/>
+            <class name="HomeWork18">
+                <methods>
+                    <include name="playSong"/>
+                </methods>
+            </class>
         </classes>
     </test>
 
