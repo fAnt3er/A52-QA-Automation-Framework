@@ -13,8 +13,8 @@ public class HomeWork18 extends BaseTest {
         playlist.click();
         WebElement selectSong = driver.findElement(By.xpath("//td[contains(text(),'Airbit')]"));
         selectSong.click();
-        WebElement progressPane = driver.findElement(By.cssSelector("[id='progressPane']"));
-        Assert.assertTrue(progressPane.isDisplayed());
+        WebElement soundBar = driver.findElement(By.cssSelector("[id='progressPane']"));
+        Assert.assertTrue(soundBar.isDisplayed());
 
 
     }
