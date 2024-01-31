@@ -9,13 +9,14 @@ public class HomeWork19 extends BaseTest {
 
     @Test (groups = "smoke")
 
-    public void deletePlaylist()  {
+    public void deletePlaylist() throws InterruptedException  {
 
         login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
         WebElement SelectPlaylist = driver.findElement(By.xpath("//section[@id='playlists']//a[text()='Popmusic']"));
         SelectPlaylist.click();
-        WebElement DeletePlaylist = driver.findElement(By.xpath("//span/button[2]/i"));
+        WebElement DeletePlaylist = driver.findElement(By.xpath("//span/button[2]"));
         DeletePlaylist.click();
+        Thread.sleep(3000);
         Assert.assertTrue(SelectPlaylist.isEnabled());
 
     }
