@@ -16,6 +16,8 @@ public class HomeWork19 extends BaseTest {
         SelectPlaylist.click();
         WebElement DeletePlaylist = driver.findElement(By.xpath("//span/button[2]"));
         DeletePlaylist.click();
+        WebElement ClickDeleteButton = driver.findElement(By.xpath("//button[@class='ok']"));
+        ClickDeleteButton.click();
         Thread.sleep(3000);
         Assert.assertTrue(SelectPlaylist.isEnabled());
 
