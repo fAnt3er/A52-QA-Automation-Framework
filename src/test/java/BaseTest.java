@@ -4,9 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 
@@ -16,9 +18,11 @@ public class BaseTest {
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
-    protected WebDriver driver =null;
+
+    protected WebDriver driver = null;
+
     @BeforeMethod
-    public void setUpDriver(){
+    public void setUpDriver() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
@@ -28,6 +32,7 @@ public class BaseTest {
         String url = "https://qa.koel.app/";
         driver.get(url);
     }
+
     @AfterMethod
     public void closeBrowser() {
         driver.quit();
@@ -44,6 +49,7 @@ public class BaseTest {
         //"Fantazer120393!"
 
     }
+
 
 }
 
