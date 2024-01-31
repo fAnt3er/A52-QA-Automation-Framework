@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -24,22 +25,20 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
     }
+
     @Test(groups = "smoke")
-    public void login(String email, String password) {
-        WebElement emailInput = driver.findElement(By.cssSelector("[type='email']"));
-        WebElement passwordInput = driver.findElement(By.cssSelector("[type='password']"));
-        WebElement loginButton = driver.findElement(By.cssSelector("[type='submit']"));
-        emailInput.sendKeys(email);
-        passwordInput.sendKeys(password);
-        loginButton.click();
+    public void loginWithValidCredentials() {
+        login("Yevhenii@testpro.io", "Fantazer120393!");
+        WebElement header = driver.findElement(By.cssSelector("[id='userBadge']"));
+        Assert.assertTrue(header.isDisplayed());
 
     }
 
-    @Test(groups = "regression")
-    public void LoginWithEmptyCredentials(){
-        WebElement loginButton = driver.findElement(By.cssSelector("[type='submit']"));
-        login("Yevhenii.Ustenko@testpro.io", "");
-        Assert.assertTrue(loginButton.isDisplayed());
+    @Test(groups = "regression", dataProvider = "incorrectCredentials", dataProviderClass = DataProviderCredentials.class)
+    public void LoginWithEmptyCredentials(String email, String password) {
+        WebElement logo = driver.findElement(By.cssSelector(".logo"));
+        login("", "");
+        Assert.assertTrue(logo.isDisplayed());
 
     }
 }
