@@ -28,7 +28,7 @@ public class LoginTests extends BaseTest {
 
     @Test(groups = "smoke")
     public void loginWithValidCredentials() {
-        login("Yevhenii@testpro.io", "Fantazer120393!");
+        login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
         WebElement header = driver.findElement(By.cssSelector("[id='userBadge']"));
         Assert.assertTrue(header.isDisplayed());
 
