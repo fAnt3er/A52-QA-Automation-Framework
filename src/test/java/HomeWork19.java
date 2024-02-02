@@ -15,7 +15,7 @@ public class HomeWork19 extends BaseTest {
 
     @Test (groups = "smoke")
 
-    public void deletePlaylist() throws InterruptedException {
+    public void deletePlaylist()  {
 
         String NewPlaylsit = "Popmusic";
         login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
