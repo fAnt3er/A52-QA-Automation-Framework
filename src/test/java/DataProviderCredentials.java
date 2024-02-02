@@ -9,7 +9,7 @@ public class DataProviderCredentials {
                 {"", "Fantazer120393!"},
                 {"Yevhenii@testpro.io", "Fantazer120393!"},
                 {"Yevhenii.Ustenko@testpro.io", "Fantazer93!"},
-                {"Yevhenii@testpro.io", "Fantazer93!"},
+                {"Yevhenii@testpro.io", "Fantazer93!"}
 
         };
     }
