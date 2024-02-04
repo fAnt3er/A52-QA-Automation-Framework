@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -23,6 +24,7 @@ public class BaseTest {
 
     protected WebDriver driver = null;
     protected WebDriverWait wait = null;
+    protected Actions actions = null;
 
     @BeforeMethod
     public void setUpDriver() {
@@ -35,6 +37,9 @@ public class BaseTest {
         String url = "https://qa.koel.app/";
         driver.get(url);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        actions = new Actions(driver);
+
+
     }
 
     @AfterMethod
