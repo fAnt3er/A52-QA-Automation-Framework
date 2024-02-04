@@ -19,7 +19,6 @@ public class HomeWork19 extends BaseTest {
 
         String NewPlaylsit = "Popmusic";
         login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section//i[@data-testid='sidebar-create-playlist-btn']")));
         WebElement PlaylistButton = driver.findElement(By.xpath("//section//i[@data-testid='sidebar-create-playlist-btn']"));
         PlaylistButton.click();
