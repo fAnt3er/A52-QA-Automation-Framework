@@ -29,6 +29,8 @@ public class HomeWork19 extends BaseTest {
         WebElement SafePlaylist = driver.findElement(By.cssSelector("[name='name']"));
         SafePlaylist.sendKeys(NewPlaylsit);
         SafePlaylist.sendKeys(Keys.ENTER);
+
+
         WebElement SelectPlaylist = driver.findElement(By.xpath("//section[@id='playlists']//a[text()='Popmusic']"));
         SelectPlaylist.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span/button[contains(@title,'Delete')] ")));
@@ -39,3 +41,4 @@ public class HomeWork19 extends BaseTest {
 
     }
 }
+
