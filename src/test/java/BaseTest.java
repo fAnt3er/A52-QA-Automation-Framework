@@ -14,6 +14,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.List;
 
 public class BaseTest {
 
