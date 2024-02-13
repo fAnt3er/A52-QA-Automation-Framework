@@ -1,4 +1,7 @@
 import net.bytebuddy.asm.Advice;
+import org.example.HomePage;
+import org.example.LoginPage;
+import org.example.PlaylistPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -11,34 +14,27 @@ import org.testng.annotations.Test;
 import javax.swing.*;
 import java.time.Duration;
 
+import static org.example.WaitUtils.waitUntilVisibilityOfElementLocatedBy;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
+
 public class HomeWork19 extends BaseTest {
 
-    @Test (groups = "smoke")
+    LoginPage loginPage = null;
+    HomePage homePage = null;
 
-    public void deletePlaylist() {
+    @Test
 
-        String NewPlaylsit = "Popmusic";
-        login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section//i[@data-testid='sidebar-create-playlist-btn']")));
-        WebElement PlaylistButton = driver.findElement(By.xpath("//section//i[@data-testid='sidebar-create-playlist-btn']"));
-        PlaylistButton.click();
-        wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid='playlist-context-menu-create-simple']"))));
-        WebElement CreateNewPlaylist = driver.findElement(By.cssSelector("[data-testid='playlist-context-menu-create-simple']"));
-        CreateNewPlaylist.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='name']")));
-        WebElement SafePlaylist = driver.findElement(By.cssSelector("[name='name']"));
-        SafePlaylist.sendKeys(NewPlaylsit);
-        SafePlaylist.sendKeys(Keys.ENTER);
+    public void deletePlayList() {
 
-
-        WebElement SelectPlaylist = driver.findElement(By.xpath("//section[@id='playlists']//a[text()='Popmusic']"));
-        SelectPlaylist.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span/button[contains(@title,'Delete')] ")));
-        WebElement DeletePlaylist = driver.findElement(By.xpath("//span/button[contains(@title,'Delete')] "));
-        DeletePlaylist.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='playlists']//a[text()='Popmusic']")));
-        Assert.assertTrue(SelectPlaylist.isDisplayed());
+        String newPlayList = "Popmusic";
+        loginPage = new LoginPage(driver);
+        loginPage.login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
+        homePage = new HomePage(driver);
+        homePage.creatPlayList(actions, wait, newPlayList);
+        homePage.openPlaylist(newPlayList);
+        PlaylistPage playlistPage = new PlaylistPage(driver);
+        playlistPage.deletePlaylist(wait);
+        Assert.assertTrue(homePage.getPlaylistByName(newPlayList).isDisplayed());
 
     }
 }
-
