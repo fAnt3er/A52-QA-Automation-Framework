@@ -8,10 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 import java.util.List;
@@ -28,6 +25,7 @@ public class BaseTest {
     protected Actions actions = null;
 
     @BeforeMethod
+    @Parameters("baseUrl")
     public void setUpDriver() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -47,20 +45,6 @@ public class BaseTest {
     public void closeBrowser() {
         driver.quit();
     }
-
-    public void login(String email, String password) {
-        WebElement emailInput = driver.findElement(By.cssSelector("[type='email']"));
-        WebElement passwordInput = driver.findElement(By.cssSelector("[type='password']"));
-        WebElement loginButton = driver.findElement(By.cssSelector("[type='submit']"));
-        emailInput.sendKeys(email);
-        passwordInput.sendKeys(password);
-        loginButton.click();
-        //"Yevhenii.Ustenko@testpro.io"
-        //"Fantazer120393!"
-
-    }
-
-
 }
 
 

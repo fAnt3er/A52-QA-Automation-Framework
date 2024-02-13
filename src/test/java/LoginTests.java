@@ -1,3 +1,5 @@
+import org.example.HomePage;
+import org.example.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,19 +28,23 @@ public class LoginTests extends BaseTest {
         driver.quit();
     }
 
+    LoginPage loginPage = null;
+
     @Test(groups = "smoke")
     public void loginWithValidCredentials() {
-        login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
-        WebElement header = driver.findElement(By.cssSelector("[id='userBadge']"));
-        Assert.assertTrue(header.isDisplayed());
+        loginPage = new LoginPage(driver);
+        loginPage.login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getHeader().isDisplayed());
 
     }
 
     @Test(groups = "regression", dataProvider = "incorrectCredentials", dataProviderClass = DataProviderCredentials.class)
     public void LoginWithEmptyCredentials(String email, String password) {
+        loginPage = new LoginPage(driver);
         WebElement logo = driver.findElement(By.cssSelector(".logo"));
-        login("", "");
-        Assert.assertTrue(logo.isDisplayed());
+        loginPage.login("", "");
+        Assert.assertTrue(loginPage.getlogo().isDisplayed());
 
     }
 }

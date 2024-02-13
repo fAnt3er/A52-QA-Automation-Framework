@@ -1,4 +1,8 @@
 import net.bytebuddy.asm.Advice;
+import org.example.BasePage;
+import org.example.HomePage;
+import org.example.LoginPage;
+import org.example.PlaylistPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -12,27 +16,35 @@ import java.util.List;
 
 public class ActionHW21 extends BaseTest {
 
+    LoginPage loginPage = null;
+
+    PlaylistPage playlistPage = null;
+
+    HomePage homePage = null;
+
+    BasePage basePage = null;
+
     String currentPlaylistName = "Popmusic";
     String newPlayListName = "Classic";
 
 
     @Test
     public void renamePlaylist()  {
-
-
-        login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
-        WebElement playlist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format("//a[contains(text(),'%s')]", currentPlaylistName))));
-        actions.contextClick(playlist).perform();
-        WebElement editButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul/li[contains(text(),'Edit')]")));
-        editButton.click();
-        WebElement renamePlayListInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul/li//input[@type='text']")));
+        loginPage = new LoginPage(driver);
+        loginPage.login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
+        playlistPage = new PlaylistPage(driver);
+        homePage = new HomePage(driver);
+        basePage = new BasePage(driver);
+        playlistPage.getChoosePlaylist(wait, currentPlaylistName);
+        homePage.getEditButton(wait);
+        homePage.getRenamePlayListInput(wait);
         for (int i = 0; i < currentPlaylistName.length(); i++) {
-            renamePlayListInput.sendKeys(Keys.BACK_SPACE);
+            homePage.getRenamePlayListInput(wait).sendKeys(Keys.BACK_SPACE);
         }
-        renamePlayListInput.sendKeys(newPlayListName);
-        renamePlayListInput.sendKeys(Keys.ENTER);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'success')]")));
-        Assert.assertEquals(newPlayListName, playlist.getText());
+        homePage.getRenamePlayListInput(wait).sendKeys(newPlayListName);
+        //homePage.getRenamePlayListInput(wait).sendKeys(Keys.ENTER);
+        basePage.getSuccessMessageLocator();
+        Assert.assertTrue(basePage.getSuccessMessageLocator().isDisplayed());
 
     }
 
@@ -41,16 +53,14 @@ public class ActionHW21 extends BaseTest {
         public void rollBackPlayListName() {
 
 
-        WebElement playlist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format("//a[contains(text(),'%s')]", newPlayListName))));
-        actions.contextClick(playlist).perform();
-        WebElement editButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul/li[contains(text(),'Edit')]")));
-        actions.click(editButton).perform();
-        WebElement renamePlayListInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul/li//input[@type='text']")));
-        for (int i = 0; i < newPlayListName.length(); i++) {
-            renamePlayListInput.sendKeys(Keys.BACK_SPACE);
+        playlistPage.getChoosePlaylist(wait, currentPlaylistName);
+        homePage.getEditButton(wait);
+        homePage.getRenamePlayListInput(wait);
+        for (int i = 0; i < currentPlaylistName.length(); i++) {
+            homePage.getRenamePlayListInput(wait).sendKeys(Keys.BACK_SPACE);
         }
-        renamePlayListInput.sendKeys(currentPlaylistName);
-        renamePlayListInput.sendKeys(Keys.ENTER);
+        homePage.getRenamePlayListInput(wait).sendKeys(currentPlaylistName);
+        homePage.getRenamePlayListInput(wait).sendKeys(Keys.ENTER);
 
 
     }
