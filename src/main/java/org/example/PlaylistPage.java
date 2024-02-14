@@ -1,14 +1,17 @@
 package org.example;
 
+import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PlaylistPage extends BasePage {
 
-    @FindBy (xpath = "//span/button[contains(@title,'Delete')]")
+    @FindBy(xpath = "//span/button[contains(@title,'Delete')]")
     WebElement DeletePlaylist;
 
     @FindBy(css = "[type='search']")
@@ -16,53 +19,56 @@ public class PlaylistPage extends BasePage {
 
     @FindBy(css = "[data-test='view-all-songs-btn']")
     WebElement viewButton;
-
-
-    @FindBy (css = "[class='btn-add-to']")
+    @FindBy(css = "[class='btn-add-to']")
     WebElement addInput;
 
-    @FindBy (xpath = "//li[contains(@class,'$s')]/a")
+    @FindBy(xpath = "//li[contains(@class,'$s')]/a")
     WebElement playlistName;
 
     @FindBy(css = "[id='progressPane']")
     WebElement soundBar;
 
-
-
     public PlaylistPage(WebDriver existDriver) {
         super(existDriver);
     }
 
-    public WebElement getDeletePlaylist(WebDriverWait wait) {
+    public WebElement getDeletePlaylist() {
         return DeletePlaylist;
 
     }
 
     public void deletePlaylist(WebDriverWait wait) {
-        getDeletePlaylist(wait).click();
+        getDeletePlaylist().click();
     }
-    public WebElement getSearchSong(WebDriverWait wait) {
+
+    public WebElement getSearchSong() {
         return search;
     }
 
-    public WebElement getViewButton(WebDriverWait wait) {
+    public void searchSong(String songName) {
+        getSearchSong().sendKeys(songName);
+    }
+
+    public WebElement getViewButton() {
         return viewButton;
     }
-    public WebElement getSelectSong(WebDriverWait wait, String selectSong) {
+
+    public WebElement getSelectSong(String selectSong) {
         return findElement(By.xpath(String.format("//tr/td[contains(text(),'%s')]", selectSong)));
     }
 
-    public WebElement getAddInputButton(WebDriverWait wait) {
+    public WebElement getAddInputButton() {
         return addInput;
     }
 
-    public WebElement getSoundBar(WebDriverWait wait) {
+    public WebElement getSoundBar() {
         return soundBar;
     }
 
-    public WebElement getChoosePlaylist(WebDriverWait wait, String playlistName ) {
-        return findElement(By.xpath(String.format("//li[contains(@class,'$s')]/a", playlistName )));
+    public void doubleClickByChoosePlaylist(String playlistName) {
+        WebElement playList = waitAndFindWebElement(By.xpath(String.format("//li//a[text()='%s']", playlistName)));
+        Actions actions = new Actions(pageDriver);
+        actions.doubleClick(playList);
     }
-
 }
 

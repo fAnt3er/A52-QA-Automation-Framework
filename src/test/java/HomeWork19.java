@@ -14,8 +14,6 @@ import org.testng.annotations.Test;
 import javax.swing.*;
 import java.time.Duration;
 
-import static org.example.WaitUtils.waitUntilVisibilityOfElementLocatedBy;
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public class HomeWork19 extends BaseTest {
 
@@ -23,14 +21,12 @@ public class HomeWork19 extends BaseTest {
     HomePage homePage = null;
 
     @Test
-
     public void deletePlayList() {
-
         String newPlayList = "Popmusic";
         loginPage = new LoginPage(driver);
         loginPage.login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
         homePage = new HomePage(driver);
-        homePage.creatPlayList(actions, wait, newPlayList);
+        homePage.creatPlayList(actions, newPlayList);
         homePage.openPlaylist(newPlayList);
         PlaylistPage playlistPage = new PlaylistPage(driver);
         playlistPage.deletePlaylist(wait);

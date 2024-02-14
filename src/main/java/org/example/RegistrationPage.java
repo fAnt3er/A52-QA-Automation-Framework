@@ -8,22 +8,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RegistrationPage extends BasePage {
 
-    @FindBy(css = "[href='registration']")
-    WebElement Registration;
-
     @FindBy(css = "[type='email']")
     WebElement emailInput;
 
     @FindBy(css = "[method='POST']")
     WebElement ConfirmationMessage;
-
+    @FindBy(css = "[type='submit']")
+    WebElement submitButton;
 
     public RegistrationPage(WebDriver existDriver) {
         super(existDriver);
 
-    }
-    public WebElement getRegistration() {
-        return Registration;
     }
 
     private LoginPage emailInput(String email) {
@@ -35,8 +30,13 @@ public class RegistrationPage extends BasePage {
         return ConfirmationMessage;
     }
 
+    public void fillEmail(String email) {
+        emailInput.sendKeys(email);
+    }
 
-
+    public void clickSubmitButton() {
+        submitButton.click();
+    }
 }
 
 

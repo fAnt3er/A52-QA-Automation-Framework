@@ -15,62 +15,64 @@ import javax.swing.*;
 
 public class HomePage extends BasePage {
 
-     @FindBy (css = "[id='userBadge']")
-     WebElement header;
+    @FindBy(css = "[id='userBadge']")
+    WebElement header;
 
-     @FindBy (xpath = "//section//i[@data-testid='sidebar-create-playlist-btn']")
-     WebElement PlaylistButton;
+    @FindBy(xpath = "//section//i[@data-testid='sidebar-create-playlist-btn']")
+    WebElement PlaylistButton;
 
-     @FindBy (css = "[data-testid='playlist-context-menu-create-simple']")
-     WebElement CreateNewPlaylist;
+    @FindBy(css = "[data-testid='playlist-context-menu-create-simple']")
+    WebElement CreateNewPlaylist;
 
-     @FindBy (css = "[name='name']")
-     WebElement NewPlayList;
+    @FindBy(css = "[name='name']")
+    WebElement NewPlayList;
 
     @FindBy(xpath = "//ul/li[contains(text(),'Edit')]")
-     WebElement editButton;
+    WebElement editButton;
 
-    @FindBy (xpath = "//ul/li//input[@type='text']")
+    @FindBy(xpath = "//ul/li//input[@type='text']")
     WebElement renamePlayListInput;
 
-     public HomePage(WebDriver existDriver) {
+    public HomePage(WebDriver existDriver) {
         super(existDriver);
     }
 
-     public WebElement getHeader() {
+    public WebElement getHeader() {
         return header;
     }
-     public WebElement getPlaylistButton(WebDriverWait wait) {
+
+    public WebElement getPlaylistButton() {
         return PlaylistButton;
     }
 
-     public WebElement getCreateNewPlaylist(WebDriverWait wait) {
+    public WebElement getCreateNewPlaylist() {
         return CreateNewPlaylist;
     }
 
-     public WebElement getNewPlayList(WebDriverWait wait) {
+    public WebElement getNewPlayList() {
         return NewPlayList;
     }
 
-    public WebElement getEditButton(WebDriverWait wait) {
-         return editButton;
+    public void clickEditButton() {
+        WaitUtils.waitUntilVisibilityOfElement(pageDriver, editButton);
+        editButton.click();
     }
 
-    public WebElement getRenamePlayListInput(WebDriverWait wait) {
-         return renamePlayListInput;
+    public WebElement getRenamePlayListInput() {
+        return renamePlayListInput;
     }
 
-     public void creatPlayList(Actions actions, WebDriverWait wait, String newPlaylist) {
-        actions.moveToElement(getPlaylistButton(wait)).perform();
-        getPlaylistButton(wait).click();
-        getCreateNewPlaylist(wait).click();
-        getNewPlayList(wait).click();
-        getNewPlayList(wait).sendKeys(newPlaylist);
-        getNewPlayList(wait).sendKeys(Keys.ENTER);
+    public void creatPlayList(Actions actions, String newPlaylist) {
+        actions.moveToElement(getPlaylistButton()).perform();
+        getPlaylistButton().click();
+        getCreateNewPlaylist().click();
+        getNewPlayList().click();
+        getNewPlayList().sendKeys(newPlaylist);
+        getNewPlayList().sendKeys(Keys.ENTER);
     }
 
     public WebElement getPlaylistByName(String newPlaylist) {
-         return findElement(By.xpath(String.format("//section[@id='playlists']//a[text()='%s']", newPlaylist)));
+        return findElement(By.xpath(String.format("//section[@id='playlists']//a[text()='%s']", newPlaylist)));
     }
 
     public void openPlaylist(String newPlaylist) {

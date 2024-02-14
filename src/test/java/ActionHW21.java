@@ -17,51 +17,38 @@ import java.util.List;
 public class ActionHW21 extends BaseTest {
 
     LoginPage loginPage = null;
-
     PlaylistPage playlistPage = null;
-
     HomePage homePage = null;
-
-    BasePage basePage = null;
-
     String currentPlaylistName = "Popmusic";
     String newPlayListName = "Classic";
 
-
     @Test
-    public void renamePlaylist()  {
+    public void renamePlaylist() {
         loginPage = new LoginPage(driver);
         loginPage.login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
         playlistPage = new PlaylistPage(driver);
         homePage = new HomePage(driver);
-        basePage = new BasePage(driver);
-        playlistPage.getChoosePlaylist(wait, currentPlaylistName);
-        homePage.getEditButton(wait);
-        homePage.getRenamePlayListInput(wait);
+        playlistPage.doubleClickByChoosePlaylist(currentPlaylistName);
+        homePage.clickEditButton();
+        homePage.getRenamePlayListInput().click();
         for (int i = 0; i < currentPlaylistName.length(); i++) {
-            homePage.getRenamePlayListInput(wait).sendKeys(Keys.BACK_SPACE);
+            homePage.getRenamePlayListInput().sendKeys(Keys.BACK_SPACE);
         }
-        homePage.getRenamePlayListInput(wait).sendKeys(newPlayListName);
+        homePage.getRenamePlayListInput().sendKeys(newPlayListName);
         //homePage.getRenamePlayListInput(wait).sendKeys(Keys.ENTER);
-        basePage.getSuccessMessageLocator();
-        Assert.assertTrue(basePage.getSuccessMessageLocator().isDisplayed());
+        Assert.assertTrue(homePage.getSuccessMessageLocator().isDisplayed());
 
     }
 
     @AfterMethod
-
-        public void rollBackPlayListName() {
-
-
-        playlistPage.getChoosePlaylist(wait, currentPlaylistName);
-        homePage.getEditButton(wait);
-        homePage.getRenamePlayListInput(wait);
+    public void rollBackPlayListName() {
+        playlistPage.doubleClickByChoosePlaylist(currentPlaylistName);
+        homePage.clickEditButton();
+        homePage.getRenamePlayListInput().click();
         for (int i = 0; i < currentPlaylistName.length(); i++) {
-            homePage.getRenamePlayListInput(wait).sendKeys(Keys.BACK_SPACE);
+            homePage.getRenamePlayListInput().sendKeys(Keys.BACK_SPACE);
         }
-        homePage.getRenamePlayListInput(wait).sendKeys(currentPlaylistName);
-        homePage.getRenamePlayListInput(wait).sendKeys(Keys.ENTER);
-
-
+        homePage.getRenamePlayListInput().sendKeys(currentPlaylistName);
+        homePage.getRenamePlayListInput().sendKeys(Keys.ENTER);
     }
 }
