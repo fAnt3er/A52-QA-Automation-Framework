@@ -16,3 +16,5 @@ public class WaitUtils {    // Web Driver, для всех классов
 
     }
 }
+
+    // java -jar selenium-server-4.17.0.jar standalone
