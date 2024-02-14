@@ -18,11 +18,9 @@ public class HomeWork18 extends BaseTest {
        loginPage = new LoginPage(driver);
        loginPage.login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
        playlistPage = new PlaylistPage(driver);
-       playlistPage.getChoosePlaylist(wait, playlistName);
-       playlistPage.getSelectSong(wait, songName);
-       playlistPage.getSoundBar(wait);
-       Assert.assertTrue(playlistPage.getSoundBar(wait).isDisplayed());
-
+       playlistPage.doubleClickByChoosePlaylist(playlistName);
+       playlistPage.getSelectSong(songName).click();
+       Assert.assertTrue(playlistPage.getSoundBar().isDisplayed());
    }
 }
 

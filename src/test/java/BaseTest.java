@@ -19,8 +19,6 @@ public class BaseTest {
     protected WebDriverWait wait = null;
     protected Actions actions = null;
 
-
-
     @BeforeMethod
     @Parameters("baseUrl")
     public void setUpDriver(String url) throws MalformedURLException {
@@ -61,12 +59,8 @@ public class BaseTest {
                 options.addArguments("--remote-allow-origins=*");
                 options.addArguments("--disable-notifications");
                 return driver = new ChromeDriver(options);
-
-
-
         }
     }
-
 }
             // java -jar selenium-server-4.17.0.jar standalone - for Terminal
 

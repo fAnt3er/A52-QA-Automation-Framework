@@ -13,9 +13,7 @@ import org.testng.annotations.Test;
 public class HomeWork17 extends BaseTest {
 
     LoginPage loginPage = null;
-
     PlaylistPage playlistPage = null;
-
 
     @Test(groups = "smoke")
     public void addSongToPlaylist()  {
@@ -24,13 +22,11 @@ public class HomeWork17 extends BaseTest {
         String songName = "BornKing";
         String newPlaylistName = "Favorites";
         playlistPage = new PlaylistPage(driver);
-        playlistPage.getSearchSong(wait);
-        playlistPage.getViewButton(wait);
-        playlistPage.getSelectSong(wait, songName);
-        playlistPage.getAddInputButton(wait);
-        playlistPage.getChoosePlaylist(wait, newPlaylistName);
-        Assert.assertTrue(playlistPage.getSelectSong(wait, songName).isDisplayed());
-
+        playlistPage.searchSong(songName);
+        playlistPage.getViewButton().click();
+        playlistPage.getSelectSong(songName).click();
+        playlistPage.getAddInputButton().click();
+        playlistPage.doubleClickByChoosePlaylist(newPlaylistName);
+        Assert.assertTrue(playlistPage.getSelectSong(songName).isDisplayed());
     }
-
 }

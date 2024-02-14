@@ -16,10 +16,8 @@ public class LoginPage extends BasePage{
     WebElement loginButton;
     @FindBy (css = ".logo")
     WebElement logo;
-
-
-
-
+    @FindBy(css = "[href='registration']")
+    WebElement registrationLink;
     public LoginPage(WebDriver existDriver) {
         super(existDriver);
     }
@@ -31,7 +29,9 @@ public class LoginPage extends BasePage{
     }
     public WebElement getlogo() {
         return logo;
+    }
 
-
+    public void  clickRegistrationLink() {
+        registrationLink.click();
     }
 }

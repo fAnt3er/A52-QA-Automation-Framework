@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class BasePage {   // общий класс
+public abstract class BasePage {   // общий класс
 
     WebDriver pageDriver = null;
 
@@ -40,6 +40,10 @@ public class BasePage {   // общий класс
     public WebElement getSuccessMessageLocator() {
         return successMessageLocator;
     }
+
+//    public boolean isSuccessMessageDisplayed() {
+//        return getSuccessMessageLocator().isDisplayed();
+//    }
 
     public WebElement waitAndFindWebElement(WebDriverWait wait, By locator) {     //ждать и искать
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
