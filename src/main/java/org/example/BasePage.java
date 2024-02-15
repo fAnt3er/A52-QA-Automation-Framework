@@ -13,6 +13,10 @@ import java.time.Duration;
 
 public abstract class BasePage {   // общий класс
 
+    protected Actions actions;
+    protected WebDriverWait wait;
+    protected WebDriver driver;
+
     WebDriver pageDriver = null;
 
     @FindBy (xpath = "div[contains(@class,'success')]")
