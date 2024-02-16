@@ -19,9 +19,9 @@ public class HomeWork16 extends BaseTest {
     @Test (groups = "smoke")
     @Parameters("email")
     public void RegistrationNavigation (String email) {
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(getDriver());
         loginPage.clickRegistrationLink();
-        registrationPage = new RegistrationPage(driver);
+        registrationPage = new RegistrationPage(getDriver());
         registrationPage.fillEmail(email);
         registrationPage.clickSubmitButton();
         Assert.assertTrue(registrationPage.getConfirmationMessage().isDisplayed());

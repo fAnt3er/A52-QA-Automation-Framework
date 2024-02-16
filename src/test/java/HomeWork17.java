@@ -17,11 +17,11 @@ public class HomeWork17 extends BaseTest {
 
     @Test(groups = "smoke")
     public void addSongToPlaylist()  {
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(getDriver());
         loginPage.login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
         String songName = "BornKing";
         String newPlaylistName = "Favorites";
-        playlistPage = new PlaylistPage(driver);
+        playlistPage = new PlaylistPage(getDriver());
         playlistPage.searchSong(songName);
         playlistPage.getViewButton().click();
         playlistPage.getSelectSong(songName).click();

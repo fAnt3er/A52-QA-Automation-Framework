@@ -24,10 +24,10 @@ public class ActionHW21 extends BaseTest {
 
     @Test
     public void renamePlaylist() {
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(getDriver());
         loginPage.login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
-        playlistPage = new PlaylistPage(driver);
-        homePage = new HomePage(driver);
+        playlistPage = new PlaylistPage(getDriver());
+        homePage = new HomePage(getDriver());
         playlistPage.doubleClickByChoosePlaylist(currentPlaylistName);
         homePage.clickEditButton();
         homePage.getRenamePlayListInput().click();
