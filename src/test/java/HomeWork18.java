@@ -15,9 +15,9 @@ public class HomeWork18 extends BaseTest {
    public void playSong() {
        String songName = "Airbit";
        String playlistName = "Popmusic";
-       loginPage = new LoginPage(driver);
+       loginPage = new LoginPage(getDriver());
        loginPage.login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
-       playlistPage = new PlaylistPage(driver);
+       playlistPage = new PlaylistPage(getDriver());
        playlistPage.doubleClickByChoosePlaylist(playlistName);
        playlistPage.getSelectSong(songName).click();
        Assert.assertTrue(playlistPage.getSoundBar().isDisplayed());

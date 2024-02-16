@@ -23,12 +23,12 @@ public class HomeWork19 extends BaseTest {
     @Test
     public void deletePlayList() {
         String newPlayList = "Popmusic";
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(getDriver());
         loginPage.login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
-        homePage = new HomePage(driver);
+        homePage = new HomePage(getDriver());
         homePage.creatPlayList(actions, newPlayList);
         homePage.openPlaylist(newPlayList);
-        PlaylistPage playlistPage = new PlaylistPage(driver);
+        PlaylistPage playlistPage = new PlaylistPage(getDriver());
         playlistPage.deletePlaylist(wait);
         Assert.assertTrue(homePage.getPlaylistByName(newPlayList).isDisplayed());
 
