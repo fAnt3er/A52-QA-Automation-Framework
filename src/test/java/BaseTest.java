@@ -90,7 +90,7 @@ public class BaseTest {
 }
 
 
-// java -jar selenium-server-4.17.0.jar standalone - for Terminal
+            // java -jar selenium-server-4.17.0.jar standalone - for Terminal
 
             //  "http://192.168.40.222:4444/" ссылка
 
