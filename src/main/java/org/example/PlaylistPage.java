@@ -17,13 +17,9 @@ public class PlaylistPage extends BasePage {
     @FindBy(css = "[type='search']")
     WebElement search;
 
-    @FindBy(css = "[data-test='view-all-songs-btn']")
-    WebElement viewButton;
     @FindBy(css = "[class='btn-add-to']")
     WebElement addInput;
 
-    @FindBy(xpath = "//li[contains(@class,'$s')]/a")
-    WebElement playlistName;
 
     @FindBy(css = "[id='progressPane']")
     WebElement soundBar;
@@ -49,13 +45,11 @@ public class PlaylistPage extends BasePage {
         getSearchSong().sendKeys(songName);
     }
 
-    public WebElement getViewButton() {
-        return viewButton;
-    }
 
     public WebElement getSelectSong(String selectSong) {
-        return findElement(By.xpath(String.format("//tr/td[contains(text(),'%s')]", selectSong)));
+    return findElement(By.xpath(String.format("//tr/td[contains(text(),'%s')]", selectSong)));
     }
+
 
     public WebElement getAddInputButton() {
         return addInput;
@@ -65,10 +59,20 @@ public class PlaylistPage extends BasePage {
         return soundBar;
     }
 
-    public void doubleClickByChoosePlaylist(String playlistName) {
-        WebElement playList = waitAndFindWebElement(By.xpath(String.format("//li//a[text()='%s']", playlistName)));
-        Actions actions = new Actions(pageDriver);
-        actions.doubleClick(playList);
+
+   public void doubleClickByChoosePlaylist(String playlistName) {
+      WebElement playList = waitAndFindWebElement(By.xpath(String.format("//li//a[text()='%s']", playlistName)));
+      Actions actions = new Actions(pageDriver);
+      actions.doubleClick(playList);
     }
+
 }
+
+
+ //public void doubleClickByChooseSong (String songName) {
+   // WebElement song = waitAndFindWebElement(By.xpath(String.format("//tr/td[contains(text(),'%s'", songName)));
+   // Actions actions = new Actions(pageDriver);
+   //actions.doubleClick(song);
+//}
+
 

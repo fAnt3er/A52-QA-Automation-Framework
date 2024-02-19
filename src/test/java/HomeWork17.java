@@ -1,4 +1,5 @@
 import net.bytebuddy.asm.Advice;
+import org.example.HomePage;
 import org.example.LoginPage;
 import org.example.PlaylistPage;
 import org.openqa.selenium.By;
@@ -15,15 +16,18 @@ public class HomeWork17 extends BaseTest {
     LoginPage loginPage = null;
     PlaylistPage playlistPage = null;
 
+    HomePage homePage;
+
     @Test(groups = "smoke")
     public void addSongToPlaylist()  {
+        homePage = new HomePage(getDriver());
         loginPage = new LoginPage(getDriver());
         loginPage.login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
         String songName = "BornKing";
         String newPlaylistName = "Favorites";
         playlistPage = new PlaylistPage(getDriver());
         playlistPage.searchSong(songName);
-        playlistPage.getViewButton().click();
+        homePage.getViewButton().click();
         playlistPage.getSelectSong(songName).click();
         playlistPage.getAddInputButton().click();
         playlistPage.doubleClickByChoosePlaylist(newPlaylistName);

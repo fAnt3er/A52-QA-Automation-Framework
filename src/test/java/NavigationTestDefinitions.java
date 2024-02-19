@@ -31,9 +31,9 @@ public class NavigationTestDefinitions {
 
     @When("I click on registration button")
     public void iClickOnRegistrationLink() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickRegistrationLink();
-       //driver.findElement(By.cssSelector("[href='registration']")).click();
+       LoginPage loginPage = new LoginPage(driver);
+       loginPage.clickRegistrationLink();
+      // driver.findElement(By.cssSelector("[href='registration']")).click();
    }
 
 
