@@ -45,10 +45,6 @@ public abstract class BasePage {   // общий класс
         return successMessageLocator;
     }
 
-//    public boolean isSuccessMessageDisplayed() {
-//        return getSuccessMessageLocator().isDisplayed();
-//    }
-
     public WebElement waitAndFindWebElement(WebDriverWait wait, By locator) {     //ждать и искать
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
