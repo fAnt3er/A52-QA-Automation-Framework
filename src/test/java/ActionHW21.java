@@ -23,18 +23,25 @@ public class ActionHW21 extends BaseTest {
     String newPlayListName = "Classic";
 
     @Test
-    public void renamePlaylist()  {
+    public void renamePlaylist() {
         loginPage = new LoginPage(getDriver());
         loginPage.login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
         playlistPage = new PlaylistPage(getDriver());
         homePage = new HomePage(getDriver());
-        homePage.renamePlaylist(currentPlaylistName, newPlayListName); // error
+        homePage.renamePlaylist(currentPlaylistName, newPlayListName);
+        homePage.getRenamePlayListInput().sendKeys(Keys.ENTER);
         Assert.assertTrue(homePage.getSuccessMessageLocator().isDisplayed());
 
     }
+
     @AfterMethod
-    public void rollBackChanges()  {
-        HomePage homePage = new HomePage(getDriver());
-        homePage.renamePlaylist(newPlayListName, currentPlaylistName);
+    public void rollBackPlayListName() {
+        playlistPage.doubleClickByChoosePlaylist(newPlayListName);
+        homePage.getRenamePlayListInput().click();
+        for (int i = 0; i < newPlayListName.length(); i++) {
+            homePage.getRenamePlayListInput().sendKeys(Keys.BACK_SPACE);
+        }
+        homePage.getRenamePlayListInput().sendKeys(currentPlaylistName);
+        homePage.getRenamePlayListInput().sendKeys(Keys.ENTER);
     }
 }

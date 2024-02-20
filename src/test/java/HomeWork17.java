@@ -2,6 +2,7 @@ import net.bytebuddy.asm.Advice;
 import org.example.HomePage;
 import org.example.LoginPage;
 import org.example.PlaylistPage;
+import org.example.RegistrationPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -31,6 +32,6 @@ public class HomeWork17 extends BaseTest {
         playlistPage.getSelectSong(songName).click();
         playlistPage.getAddInputButton().click();
         playlistPage.doubleClickByChoosePlaylist(newPlaylistName);
-        Assert.assertTrue(playlistPage.getSelectSong(songName).isDisplayed());
+        Assert.assertTrue(playlistPage.getSearchSong(songName).isDisplayed());
     }
 }

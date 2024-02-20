@@ -19,7 +19,7 @@ public abstract class BasePage {   // общий класс
 
     WebDriver pageDriver = null;
 
-    @FindBy (xpath = "div[contains(@class,'success')]")
+    @FindBy(xpath = "div[contains(@class,'success')]")
     WebElement successMessageLocator;
 
     public BasePage(WebDriver existDriver) {    //создания драйвера
@@ -31,7 +31,7 @@ public abstract class BasePage {   // общий класс
         return pageDriver.findElement(locator);
     }
 
-        public  WebElement waitAndFindWebElement(By locator) {
+    public WebElement waitAndFindWebElement(By locator) {
         WebDriverWait wait = new WebDriverWait(pageDriver, Duration.ofSeconds(10));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
@@ -42,6 +42,7 @@ public abstract class BasePage {   // общий класс
     }
 
     public WebElement getSuccessMessageLocator() {
+        WaitUtils.waitUntilVisibilityOfElement(pageDriver, successMessageLocator);
         return successMessageLocator;
     }
 

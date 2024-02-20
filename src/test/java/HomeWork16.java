@@ -17,8 +17,9 @@ public class HomeWork16 extends BaseTest {
     RegistrationPage registrationPage = null;
 
 
+
     @Test (groups = "smoke")
-    @Parameters("email")   // error
+    @Parameters("email")
     public void RegistrationNavigation (String email) {
         loginPage = new LoginPage(getDriver());
         loginPage.clickRegistrationLink();

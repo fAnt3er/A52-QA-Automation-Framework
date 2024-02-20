@@ -84,18 +84,17 @@ public class HomePage extends BasePage {
         return findElement(By.xpath(String.format("//section[@id='playlists']//a[text()='%s']", newPlaylist)));
     }
 
-   // public WebElement getPlaylistNameLocator(String playlistName) {
-     //   return waitAndFindWebElement(By.xpath(String.format("//li[contains(@class,'$s')]/a", playlistName));
-   // }
+
 
     public void openPlaylist(String newPlaylist) {
         getPlaylistByName(newPlaylist).click();
     }
-public void renamePlaylist(String currentPlaylistName, String newPlaylistName)  {
+
+
+    public void renamePlaylist(String currentPlaylistName, String newPlaylistName)  {
         contextClickByElement(getPlaylistByName(currentPlaylistName));
         WebElement playlistName = waitAndFindWebElement((By) editButtonLocator);
         playlistName.click();
-
         WebElement renamePlaylistInput = waitAndFindWebElement((By) renamePlayListInput);
     for (int i = 0; i < currentPlaylistName.length(); i++) {
         renamePlaylistInput.sendKeys(Keys.BACK_SPACE);
@@ -105,4 +104,5 @@ public void renamePlaylist(String currentPlaylistName, String newPlaylistName)  
         successMessageLocator.isDisplayed();
 
     }
+
 }
