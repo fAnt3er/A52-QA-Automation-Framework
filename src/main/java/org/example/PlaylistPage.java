@@ -1,12 +1,10 @@
 package org.example;
 
-import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PlaylistPage extends BasePage {
@@ -37,12 +35,12 @@ public class PlaylistPage extends BasePage {
         getDeletePlaylist().click();
     }
 
-    public WebElement getSearchSong() {
+    public WebElement getSearchSong(String songName) {
         return search;
     }
 
     public void searchSong(String songName) {
-        getSearchSong().sendKeys(songName);
+        getSearchSong(songName).sendKeys(songName);
     }
 
 
@@ -61,18 +59,12 @@ public class PlaylistPage extends BasePage {
 
 
    public void doubleClickByChoosePlaylist(String playlistName) {
-      WebElement playList = waitAndFindWebElement(By.xpath(String.format("//li//a[text()='%s']", playlistName)));
-      Actions actions = new Actions(pageDriver);
-      actions.doubleClick(playList);
+        Actions actions = new Actions(pageDriver);
+        WebElement playList = waitAndFindWebElement(By.xpath(String.format("//li//a[text()='%s']", playlistName)));
+        actions.doubleClick(playList).perform();
     }
 
 }
 
-
- //public void doubleClickByChooseSong (String songName) {
-   // WebElement song = waitAndFindWebElement(By.xpath(String.format("//tr/td[contains(text(),'%s'", songName)));
-   // Actions actions = new Actions(pageDriver);
-   //actions.doubleClick(song);
-//}
 
 
