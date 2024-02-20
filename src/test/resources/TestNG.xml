@@ -6,13 +6,13 @@
     <parameter name="email" value="exapmple@gmail.com"></parameter>
     <test name="Example Test" preserve-order="false">
         <classes>
-            <!--      <class name="NavigationTestDefinitions"/>-->
+            <!--      <class name="CucumberRunner"/>-->
             <class name="LoginTests"/>
-            <class name="HomeWork16"/>
-            <class name="HomeWork17"/>
-            <class name="HomeWork18"/>
-            <class name="HomeWork19"/>
-            <class name="ActionHW21"/>
+            <class name="RegistrationTest"/>
+            <class name="AddSongToPlaylistTest"/>
+            <class name="PlaySongTest"/>
+            <class name="DeletePlaylistTest"/>
+            <class name="RenamePlaylistTest"/>
         </classes>
     </test>
 </suite>

@@ -11,14 +11,16 @@
                     <include name="Login"/>
                 </methods>
             </class>
-            <class name="HomeWork16"/>
-            <class name="HomeWork17"/>
-            <class name="HomeWork18">
+            <class name="DeletePlaylistTest"/>
+            <class name="RegistrationTest"/>
+            <class name="AddSongToPlaylistTest"/>
+            <class name="RenamePlaylistTest"/>
+            <class name="PlaySongTest">
                 <methods>
                     <include name="playSong"/>
                 </methods>
             </class>
-            <class name="HomeWork19"/>
+            <class name="DeletePlaylistTest"/>
         </classes>
     </test>
 

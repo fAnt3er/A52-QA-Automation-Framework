@@ -1,18 +1,10 @@
-import net.bytebuddy.asm.Advice;
 import org.example.HomePage;
 import org.example.LoginPage;
 import org.example.PlaylistPage;
-import org.example.RegistrationPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class HomeWork17 extends BaseTest {
+public class AddSongToPlaylistTest extends BaseTest {
 
     LoginPage loginPage = null;
     PlaylistPage playlistPage = null;
