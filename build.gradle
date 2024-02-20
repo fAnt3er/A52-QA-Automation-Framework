@@ -28,7 +28,7 @@ dependencies {
 
 test {
     useTestNG() {
-      //  systemProperty "suite", System.getProperty("suite", suite)
+        systemProperty "suite", System.getProperty("suite", suite)
         suites("src/test/resources/TestNG.xml")          //${suite} - TestNG
       //  suites("src/test/resources/Smoke.xml")
         systemProperty "browser", System.getProperty("browser")

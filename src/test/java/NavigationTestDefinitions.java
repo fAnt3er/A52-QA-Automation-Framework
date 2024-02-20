@@ -19,7 +19,6 @@ public class NavigationTestDefinitions {
 
     WebDriver driver;
 
-  // @Given("I open browser")
     @Before
     public void openBrowser()  {
        ChromeOptions options = new ChromeOptions();
@@ -27,6 +26,12 @@ public class NavigationTestDefinitions {
        options.addArguments("--disable-notifications");
        driver = new ChromeDriver(options);
    }
+
+    @Given("I open Login page")
+    public void iOpenLoginPage() {
+        driver.get("https://qa.koel.app/");
+    }
+
 
 
     @When("I click on registration button")

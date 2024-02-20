@@ -1,11 +1,9 @@
 import org.example.LoginPage;
 import org.example.PlaylistPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class HomeWork18 extends BaseTest {
+public class PlaySongTest extends BaseTest {
 
    LoginPage loginPage = null;
    PlaylistPage playlistPage = null;
