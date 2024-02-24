@@ -59,7 +59,7 @@ public class PlaylistPage extends BasePage {
 
 
    public void doubleClickByChoosePlaylist(String playlistName) {
-        Actions actions = new Actions(pageDriver);
+        Actions actions = new Actions(driver);
         WebElement playList = waitAndFindWebElement(By.xpath(String.format("//li//a[text()='%s']", playlistName)));
         actions.doubleClick(playList).perform();
     }

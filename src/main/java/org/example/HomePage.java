@@ -38,6 +38,20 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//li[contains(@class,'$s')]/a")
     WebElement playlistNameLocator;
 
+    public void doubleClickPlaylist(String playlistName) {
+        String xpathExpression = String.format("//*[text()='%s']", playlistName);
+        WebElement playlist = driver.findElement(By.xpath(xpathExpression));
+        wait.until(ExpectedConditions.visibilityOf(playlist));
+        actions.doubleClick(playlist).build().perform();
+    }
+
+    public void enterNewPlaylistName(String playlistName) {
+        WebElement playlistInput = findElement(null);
+        playlistInput.sendKeys(Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE));
+        playlistInput.sendKeys(playlistName);
+        playlistInput.sendKeys(Keys.RETURN);
+    }
+
     public HomePage(WebDriver existDriver) {
         super(existDriver);
     }
@@ -59,7 +73,7 @@ public class HomePage extends BasePage {
     }
 
     public void clickEditButton() {
-        WaitUtils.waitUntilVisibilityOfElement(pageDriver, editButtonLocator);
+        WaitUtils.waitUntilVisibilityOfElement(driver, editButtonLocator);
         editButtonLocator.click();
     }
 
@@ -104,5 +118,4 @@ public class HomePage extends BasePage {
         successMessageLocator.isDisplayed();
 
     }
-
 }
