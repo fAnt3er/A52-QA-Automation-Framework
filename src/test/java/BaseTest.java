@@ -16,9 +16,9 @@ import java.util.HashMap;
 
 public class BaseTest {
 
-    private WebDriver driver = null;
-    protected WebDriverWait wait = null;
-    protected Actions actions = null;
+    private WebDriver driver;
+    protected WebDriverWait wait;
+    protected Actions actions;
 
     private static final ThreadLocal<WebDriver> threadLocal = new ThreadLocal<>();
 

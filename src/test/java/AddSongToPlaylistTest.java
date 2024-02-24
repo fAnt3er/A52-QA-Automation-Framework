@@ -6,8 +6,8 @@ import org.testng.annotations.Test;
 
 public class AddSongToPlaylistTest extends BaseTest {
 
-    LoginPage loginPage = null;
-    PlaylistPage playlistPage = null;
+    LoginPage loginPage;
+    PlaylistPage playlistPage;
 
     HomePage homePage;
 

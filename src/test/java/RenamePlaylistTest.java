@@ -8,9 +8,9 @@ import org.testng.annotations.Test;
 
 public class RenamePlaylistTest extends BaseTest {
 
-    LoginPage loginPage = null;
-    PlaylistPage playlistPage = null;
-    HomePage homePage = null;
+    LoginPage loginPage;
+    PlaylistPage playlistPage;
+    HomePage homePage;
     String currentPlaylistName = "Popmusic";
     String newPlayListName = "Classic";
 
