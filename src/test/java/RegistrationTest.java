@@ -6,8 +6,8 @@ import org.testng.annotations.Test;
 
 public class RegistrationTest extends BaseTest {
 
-    LoginPage loginPage = null;
-    RegistrationPage registrationPage = null;
+    LoginPage loginPage;
+    RegistrationPage registrationPage;
 
 
 

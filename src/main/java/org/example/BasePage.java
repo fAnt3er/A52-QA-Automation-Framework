@@ -17,7 +17,7 @@ public abstract class BasePage {   // общий класс
     protected WebDriverWait wait;
     protected WebDriver driver;
 
-    WebDriver pageDriver = null;
+    WebDriver pageDriver;
 
     @FindBy(xpath = "div[contains(@class,'success')]")
     WebElement successMessageLocator;

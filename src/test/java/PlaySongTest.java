@@ -5,8 +5,8 @@ import org.testng.annotations.Test;
 
 public class PlaySongTest extends BaseTest {
 
-   LoginPage loginPage = null;
-   PlaylistPage playlistPage = null;
+   LoginPage loginPage;
+   PlaylistPage playlistPage;
 
 
    @Test(groups = "smoke")

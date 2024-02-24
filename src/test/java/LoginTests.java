@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class LoginTests extends BaseTest {
-    LoginPage loginPage = null;
+    LoginPage loginPage;
 
     @Test(groups = "smoke")
     public void loginWithValidCredentials() {

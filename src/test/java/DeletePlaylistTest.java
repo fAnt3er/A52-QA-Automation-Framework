@@ -7,8 +7,8 @@ import org.testng.annotations.Test;
 
 public class DeletePlaylistTest extends BaseTest {
 
-    LoginPage loginPage = null;
-    HomePage homePage = null;
+    LoginPage loginPage;
+    HomePage homePage;
 
     @Test(groups = "smoke")
     public void deletePlayList() {
