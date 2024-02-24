@@ -17,37 +17,33 @@ public abstract class BasePage {   // общий класс
     protected WebDriverWait wait;
     protected WebDriver driver;
 
-    WebDriver pageDriver;
 
     @FindBy(xpath = "div[contains(@class,'success')]")
     WebElement successMessageLocator;
 
-    public BasePage(WebDriver existDriver) {    //создания драйвера
-        this.pageDriver = existDriver;
-        PageFactory.initElements(pageDriver, this); // add for finding all @FindBy
+    public BasePage(WebDriver driver) {    //создания драйвера
+        this.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        actions = new Actions(driver);
+        PageFactory.initElements(driver, this); // add for finding all @FindBy
     }
 
     public WebElement findElement(By locator) {   //искать илимент
-        return pageDriver.findElement(locator);
+        return driver.findElement(locator);
     }
 
     public WebElement waitAndFindWebElement(By locator) {
-        WebDriverWait wait = new WebDriverWait(pageDriver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public void contextClickByElement(WebElement element) {
-        Actions actions = new Actions(pageDriver);
+        Actions actions = new Actions(driver);
         actions.contextClick(element).perform();
     }
 
     public WebElement getSuccessMessageLocator() {
-        WaitUtils.waitUntilVisibilityOfElement(pageDriver, successMessageLocator);
+        WaitUtils.waitUntilVisibilityOfElement(driver, successMessageLocator);
         return successMessageLocator;
     }
-
-    public WebElement waitAndFindWebElement(WebDriverWait wait, By locator) {     //ждать и искать
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-
 }

@@ -20,8 +20,8 @@ public class RenamePlaylistTest extends BaseTest {
         loginPage.login("Yevhenii.Ustenko@testpro.io", "Fantazer120393!");
         playlistPage = new PlaylistPage(getDriver());
         homePage = new HomePage(getDriver());
-        homePage.renamePlaylist(currentPlaylistName, newPlayListName);
-        homePage.getRenamePlayListInput().sendKeys(Keys.ENTER);
+        homePage.doubleClickPlaylist(currentPlaylistName);
+        homePage.enterNewPlaylistName(newPlayListName);
         Assert.assertTrue(homePage.getSuccessMessageLocator().isDisplayed());
 
     }
