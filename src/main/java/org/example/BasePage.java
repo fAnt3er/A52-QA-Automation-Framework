@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.xml.sax.Locator;
 
 import java.time.Duration;
 
@@ -18,8 +19,8 @@ public abstract class BasePage {   // общий класс
     protected WebDriver driver;
 
 
-    @FindBy(xpath = "div[contains(@class,'success')]")
-    WebElement successMessageLocator;
+    @FindBy(xpath = "div[contains(@class,'success show')]")
+    public WebElement successMessageLocator;
 
     public BasePage(WebDriver driver) {    //создания драйвера
         this.driver = driver;
@@ -29,21 +30,18 @@ public abstract class BasePage {   // общий класс
     }
 
     public WebElement findElement(By locator) {   //искать илимент
-        return driver.findElement(locator);
-    }
-
-    public WebElement waitAndFindWebElement(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
+    public WebElement waitAndFindWebElement(By locator) {
+       return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
     public void contextClickByElement(WebElement element) {
-        Actions actions = new Actions(driver);
         actions.contextClick(element).perform();
     }
 
     public WebElement getSuccessMessageLocator() {
-        WaitUtils.waitUntilVisibilityOfElement(driver, successMessageLocator);
-        return successMessageLocator;
+        return wait.until(ExpectedConditions.visibilityOf(successMessageLocator));
     }
 }
