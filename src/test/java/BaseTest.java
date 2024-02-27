@@ -22,6 +22,7 @@ public class BaseTest {
 
     private static final ThreadLocal<WebDriver> threadLocal = new ThreadLocal<>();
 
+
     @BeforeMethod
     @Parameters("baseUrl")
     public void setUpDriver(String url) throws MalformedURLException {
@@ -49,9 +50,10 @@ public class BaseTest {
         String gridUrl = "http://192.168.40.222:4444/";       // копируем ссылку для удаленного запуска
         ChromeOptions options = new ChromeOptions();
         DesiredCapabilities capabilities = new DesiredCapabilities();
+        WebDriverManager.chromedriver().clearDriverCache().setup();
         switch (browser) {
             case "chrome":
-                WebDriverManager.chromedriver().setup();
+                WebDriverManager.chromedriver().clearDriverCache().setup();
                 options.addArguments("--remote-allow-origins=*");
                 options.addArguments("--disable-notifications");
                 return driver = new ChromeDriver(options);
@@ -64,7 +66,7 @@ public class BaseTest {
             case "lambda":
                 return getLambdaDriver();
             default:
-                WebDriverManager.chromedriver().setup();
+                WebDriverManager.chromedriver().clearDriverCache().setup();
                 options.addArguments("--remote-allow-origins=*");
                 options.addArguments("--disable-notifications");
                 return driver = new ChromeDriver(options);
