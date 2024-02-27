@@ -1,10 +1,7 @@
 package org.example;
 
 import org.checkerframework.checker.units.qual.A;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -38,6 +35,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//li[contains(@class,'$s')]/a")
     WebElement playlistNameLocator;
 
+    @FindBy (css = "[name='name']")
+    private WebElement playlistInput;
+
     public void doubleClickPlaylist(String playlistName) {
         String xpathExpression = String.format("//*[text()='%s']", playlistName);
         WebElement playlist = driver.findElement(By.xpath(xpathExpression));
@@ -46,7 +46,6 @@ public class HomePage extends BasePage {
     }
 
     public void enterNewPlaylistName(String playlistName) {
-        WebElement playlistInput = findElement(null);
         playlistInput.sendKeys(Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE));
         playlistInput.sendKeys(playlistName);
         playlistInput.sendKeys(Keys.RETURN);
